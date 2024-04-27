@@ -13,7 +13,7 @@ CREATE TABLE phones(
 	manufacturer VARCHAR(50),
 	price INTEGER,
 	units_sold INTEGER
-);
+);s
 
 -- DELETE TABLE
 DROP TABLE cities;
@@ -24,6 +24,7 @@ SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname NOT IN ('pg_catalog'
 
 -- SHOW DATA FROM A TABLE
 SELECT * FROM cities;
+SELECT * FROM cities WHERE area > 2300;
 
 -- SHOW SPECIFIC COLUMS
 SELECT name, country FROM cities;
@@ -43,7 +44,6 @@ VALUES
 
 -- DATA TRANSFORMATION
 SELECT name, population / area AS density FROM cities;
-
 SELECT name, price * units_sold AS revenue FROM phones;
 
 -- OPERATORS (join two strings)
@@ -52,3 +52,22 @@ SELECT CONCAT(name, ', ', country) AS location FROM cities;
 
 -- OPERATORS (upper case)
 SELECT UPPER(CONCAT(name, ', ', country)) AS location FROM cities;
+
+
+SELECT name, manufacturer FROM phones WHERE manufacturer IN('Apple','Samsung');
+SELECT name , price * units_sold AS total_revenue FROM phones WHERE price * units_sold > 1000000;
+
+-- DELETE RECORDS FROM A TABLE WHERE A VALUE MATCH WITH A PATTERN
+DELETE FROM cities * WHERE name = 'Montevideo';
+
+-- UPDATE RECORDS FROM A TABLE WHERE A VALUE MATCH WITH A PATTERN
+UPDATE cities SET population = 282125000, area=4015 WHERE name = 'Shanghai';
+
+-- CREATE NEW DATABASE
+CREATE DATABASE Photo_Sharing;
+
+CREATE TABLE users
+
+SELECT * FROM cities;
+
+
